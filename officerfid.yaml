@@ -1,0 +1,42 @@
+# Relies on custom component from https://github.com/avwuff/esphome-wiegand
+esphome:
+  includes:
+    - wiegand_device.h # TODO: Update code to use official ESPHome Wiegand component
+  name: officerfid
+  platform: ESP8266
+  board: d1_mini_lite #d1_mini
+
+wifi:
+  ssid: "Your-WiFi-SSID"
+  password: "Your-WiFi-Password"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Officerfid Fallback Hotspot"
+    password: "Your-desired-hotspot-password"
+
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+sensor:
+- platform: custom
+  lambda: |-
+    auto wiegand = new WiegandReader(D5, D6);
+    App.register_component(wiegand);
+    return {wiegand};
+  sensors:
+    name: "Card ID"
+    on_value:
+      then:
+        - homeassistant.tag_scanned: !lambda |-
+            char buf[16];
+            sprintf(buf, "%.0f", x);
+            std::string s = buf;
+            return s;       
