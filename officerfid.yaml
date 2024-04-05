@@ -1,7 +1,7 @@
 # Relies on custom component from https://github.com/avwuff/esphome-wiegand
 esphome:
   includes:
-    - wiegand_device.h # TODO: Update code to use official ESPHome Wiegand component
+    - wiegand_device.h # TODO: #1 Update code to use official ESPHome Wiegand component
   name: officerfid
   platform: ESP8266
   board: d1_mini_lite #d1_mini
