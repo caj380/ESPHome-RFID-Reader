@@ -21,13 +21,11 @@ ESPHome RFID Reader using the [ESP RFID Tool](https://github.com/rfidtool/ESP-RF
   
 
 ### Software
-1. Install the [custom wiegand component](https://github.com/avwuff/esphome-wiegand) by avwuff
-2. Create a new device in ESPHome using [this yaml file](officerfid.yaml)
-3. Download the .bin file for your new device from ESPHome
-4. Connect to the SSID: `ESP-RFID-Tool` and browse to http://192.168.1.1
+1. Create a new device in ESPHome using [this yaml file](officerfid.yaml)
+2. Download the .bin file for your new device from ESPHome
+3. Connect to the SSID: `ESP-RFID-Tool` and browse to http://192.168.1.1
    - Deafult login: `admin`/`rfidtool`
-5. Navigate to the "Upgrade Firmware" page and upload the .bin file you got from ESPHome
+4. Navigate to the "Upgrade Firmware" page and upload the .bin file you got from ESPHome
 
 ### TODO
-- Update code to use official ESPHome Wiegand component
 - Make annotated wiring diagram 
