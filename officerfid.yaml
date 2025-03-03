@@ -1,10 +1,8 @@
-# Relies on custom component from https://github.com/avwuff/esphome-wiegand
 esphome:
-  includes:
-    - wiegand_device.h # TODO: #1 Update code to use official ESPHome Wiegand component
   name: officerfid
-  platform: ESP8266
-  board: d1_mini_lite #d1_mini
+
+esp8266:
+  board: d1_mini_lite
 
 wifi:
   ssid: "Your-WiFi-SSID"
@@ -24,19 +22,12 @@ logger:
 api:
 
 ota:
+  platform: esphome
 
-sensor:
-- platform: custom
-  lambda: |-
-    auto wiegand = new WiegandReader(D5, D6);
-    App.register_component(wiegand);
-    return {wiegand};
-  sensors:
-    name: "Card ID"
-    on_value:
-      then:
-        - homeassistant.tag_scanned: !lambda |-
-            char buf[16];
-            sprintf(buf, "%.0f", x);
-            std::string s = buf;
-            return s;       
+wiegand:
+  - id: rfidreader
+    d0: D5
+    d1: D6
+    on_tag:
+      - lambda: ESP_LOGI("TAG", "received tag %s", x.c_str());
+      - homeassistant.tag_scanned: !lambda 'return x;'
