@@ -6,7 +6,7 @@ ESPHome RFID Reader using the [ESP RFID Tool](https://github.com/rfidtool/ESP-RF
 ## Bill of Materials
 
 - [ESP RFID Tool](https://github.com/rfidtool/ESP-RFID-Tool)
-- [7304D2 Dual Frequency Wiegand Reader](https://www.aliexpress.com/item/3256803106772583.html) (Or any RFID/NFC wiegand reader that has room for the ESP on the back)
+- [7304D2 Dual Frequency Wiegand Reader](https://www.amazon.com/dp/B07D587LZ3) (Or any RFID/NFC wiegand reader that has room for the ESP on the back)
 - [12V USB-C PD Decoy Trigger Module](https://www.aliexpress.com/item/3256805078382919.html) (Make sure to get the 12v version)
 
 
